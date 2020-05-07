@@ -31,7 +31,7 @@ Running that code would result in assertion errors, with the funcall as comment:
 . FAILURE
 name:       check-equal?
 location:   my-file.rkt:12:9
-message:    #<syntax:assert.rkt:31:8 (my-func 4 5 6)>
+message:    #syntax:assert.rkt:31:8 (my-func 4 5 6)
 actual:     15
 expected:   16
 --------------------
@@ -40,7 +40,7 @@ expected:   16
 name:       check-true
 location:   my-file.rkt:16:9
 params:     '(#f)
-message:    #<syntax:assert.rkt:39:8 (my-pred? (quote (4 5 6)))>
+message:    #syntax:assert.rkt:39:8 (my-pred? (quote (4 5 6)))
 --------------------
 </pre>
 
