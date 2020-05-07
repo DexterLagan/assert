@@ -6,14 +6,16 @@
 ;; does not require rackunit to be required at the module level
 (define-syntax (assert stx)
   (syntax-parse stx
-    [(_ ?a ?b)
-     #'(module+ test
+    [(_assert ?a ?b)
+     (quasisyntax/loc stx
+       (module+ test
          (require rackunit)
-         (check-equal? ?a ?b #'?a))]
-    [(_ ?a)
-     #'(module+ test
+         #,(syntax/loc stx (check-equal? ?a ?b #'?a))))]
+    [(_assert ?a)
+     (quasisyntax/loc stx
+       (module+ test
          (require rackunit)
-         (check-true ?a #'?a))]))
+         #,(syntax/loc stx (check-true ?a #'?a))))]))
 
 ; a few examples
 (assert (string-append "a" "b") "ab")
